@@ -1,2 +1,5 @@
 # Project exclude paths
-/douyin_video/node_modules/
+/node_modules/
+.idea
+*.py[cod]
+__pycache__.*
