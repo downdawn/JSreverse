@@ -1,5 +1,8 @@
 # JSreverse
-js逆向和爬虫
+
+记录一些js逆向和爬虫
+
+## 已包含以下内容
 
 ### CrawlerLab
 
