@@ -5,7 +5,7 @@ import time
 import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from douyin_video.settings import *
+from 抖音.settings import *
 
 
 class HandleVideo(object):
@@ -52,7 +52,7 @@ class HandleVideo(object):
         # chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
         #
         # driver = webdriver.Chrome(options=chrome_options)
-        # result_url = r'file://G:\project\douyin_video\result.html'
+        # result_url = r'file://G:\project\抖音\result.html'
         # driver.get(url=result_url)
         # time.sleep(2)
         # signature = driver.title

@@ -13,4 +13,4 @@ list_headers = {
     "Referer": "http://www.dianping.com/xiamen/ch10"  # TODO 不要写死，设置cookie
 }
 
-file_path = "./woff_file/"
+file_path = "woff_file/"

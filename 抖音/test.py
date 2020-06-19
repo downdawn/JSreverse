@@ -9,7 +9,7 @@ chrome_options.add_argument('--start-maximized')
 chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
 
 driver = webdriver.Chrome(options=chrome_options)
-# result_url = r'file://G:\project\douyin_video\result.html'
+# result_url = r'file://G:\project\抖音\result.html'
 result_url = "https://www.iesdouyin.com/share/user/88445518961"
 driver.get(url=result_url)
 time.sleep(20)
@@ -35,7 +35,7 @@ time.sleep(20)
 #                            args=[f'--window-size={width},{height}', '--disable-infobars'])
 #     page = await browser.newPage()
 #     await page.setViewport({'width': width, 'height': height})
-#     await page.goto(r'file://F:\Workspace\works\app_code\douyin_video\result.html')
+#     await page.goto(r'file://F:\Workspace\works\app_code\抖音\result.html')
 #     await page.evaluate(
 #         '''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''')
 #     await asyncio.sleep(1)
