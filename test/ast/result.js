@@ -1,0 +1,1 @@
+let test = "你好，夜幕！This is a test!";
