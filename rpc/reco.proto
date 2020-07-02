@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+message UserRequest {
+    string user_id=1;
+    int32 channel_id=2;
+    int32 article_num=3;
+    int64 time_stamp=4;
+}
+
+message Track {
+    string click=1;
+    string collect=2;
+    string share=3;
+    string read=4;
+}
+
+message Article {
+    int64 article_id=1;
+    Track track=2;
+}
+
+message ArticleResponse {
+    string exposure=1;
+    int64 time_stamp=2;
+    repeated Article recommends=3;
+}
+
+service UserRecommend {
+    rpc user_recommend(UserRequest) returns(ArticleResponse) {}
+}
