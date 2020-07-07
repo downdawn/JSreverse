@@ -5,7 +5,8 @@ import json
 from urllib.parse import urlencode
 
 import requests
-from dy.settings import pc_headers, phone_headers, get_sig_url, xhr_url, video_params
+# from dy.settings import pc_headers, phone_headers, get_sig_url, xhr_url, video_params
+from settings import get_sig_url, xhr_url, video_params, share_url, pc_headers, phone_headers
 
 
 class HandleVideo(object):
@@ -18,10 +19,10 @@ class HandleVideo(object):
     def get_params(self):
         """获取dytk和tac参数"""
         # share_id = '88445518961'
-        share_url = 'https://www.iesdouyin.com/share/user/{}'.format(self.share_id)
+        _share_url = share_url.format(self.share_id)
 
         try:
-            response = requests.get(url=share_url, headers=pc_headers)
+            response = requests.get(url=_share_url, headers=pc_headers)
             dytk_search = re.compile("dytk: '(.*?)'")
             tac_search = re.compile("<script>tac='(.*?)'</script>")
 

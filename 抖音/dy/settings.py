@@ -14,7 +14,10 @@ phone_headers = {
 get_sig_url = "http://127.0.0.1:3000"
 
 # 请求视频接口
-xhr_url = "https://www.iesdouyin.com/web/api/v2/aweme/post/"
+xhr_url = "https://www.amemv.com/web/api/v2/aweme/post/"
+
+# 分享页
+share_url = 'https://www.amemv.com/share/user/{}'
 
 # 请求视频接口参数
 video_params = {
