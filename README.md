@@ -19,6 +19,7 @@
  - IM即时通讯
  - AST
  - RPC
+ - sekiro
 
 ## 相关文章
 
@@ -32,4 +33,25 @@
 
 
 [RPC实现伪个性化推荐方案](https://www.downdawn.com/blog/detail/36/)
+
+## 大部分解密基本使用
+
+### 1、环境
+
+node(安装相关库：express等)
+
+python3
+
+###  2、文件说明
+jm.js是js的解密文件
+
+server.js是node express运行的接口服务器，提供解密参数接口调用获取
+
+demo.py是python运行的测试文件，请求解密接口以及数据接口，返回数据
+
+###  3、运行
+
+node server.js(服务器上可以使用pm2管理运行)
+
+python demo.py
 

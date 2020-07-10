@@ -3,10 +3,10 @@
 import requests
 
 jm_js = "http://127.0.0.1:3000/"
-params = requests.get(url=jm_js).text
-print('_signature', params)
+_signature = requests.get(url=jm_js).text
+print('_signature', _signature)
 
-querystring = {"_signature": params, "channelId": "94349543909", "count": "12",
+querystring = {"_signature": _signature, "channelId": "94349543909", "count": "12",
                "request_from": "701", "queryCount": "1", "maxTime": "0"}
 
 url = "https://www.ixigua.com/api/feedv2/feedById"
