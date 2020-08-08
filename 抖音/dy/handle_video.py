@@ -43,7 +43,7 @@ class HandleVideo(object):
             "tac": new_tac
         }
         try:
-            response = json.loads(requests.get(url=get_sig_url, params=urlencode(params)).text)
+            response = json.loads(requests.get(url=get_sig_url, params=urlencode(params), timeout=10).text)
             if response and response["code"] == 200:
                 signature = response["data"]
                 print(signature)
@@ -59,7 +59,7 @@ class HandleVideo(object):
         video_params["dytk"] = dytk
 
         try:
-            response = requests.get(url=xhr_url, params=video_params, headers=pc_headers)
+            response = requests.get(url=xhr_url, params=video_params, headers=pc_headers, timeout=10)
         except Exception as e:
             raise Exception("请求视频接口异常", e)
 
