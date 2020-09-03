@@ -1,4 +1,4 @@
-var CryptoJS=require('crypto-js');
+var CryptoJS=require('./node_modules/crypto-js');
 var text = {"o00o0o00o0o0o0":"eval0514undefined"};
 var key = "37fd7f3f77d7ceae";
 
