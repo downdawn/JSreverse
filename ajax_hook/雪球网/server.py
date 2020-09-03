@@ -14,7 +14,7 @@ def receive():
     """接收前端hook后的数据"""
     content = json.loads(request.data)
     print(content)
-    # do something
+    # 数据处理，清洗保存
     return jsonify({'status': True})
 
 

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="GBK">
+    <title>clientX/clientY example</title>
+
+    <script>
+        function showCoords(evt){
+            alert(
+                "clientX value: " + evt.clientX + "\n" +
+                "clientY value: " + evt.clientY + "\n"
+            );
+        }
+    </script>
+</head>
+<body onmousedown="showCoords(event)">
+    <h1>点击页面任意位置，即可显示当前鼠标的坐标位置</h1>
+
+    <p>MouseEvent.clientX 是只读属性， 它提供事件发生时的应用客户端区域的水平坐标 (与页面坐标不同)。</p>
+    <p>例如，不论页面是否有水平滚动，当你点击客户端区域的左上角时，鼠标事件的 clientX 值都将为 0 。</p>
+    <p>最初这个属性被定义为长整型（long integer），如今 CSSOM 视图模块将其重新定义为双精度浮点数（double float）。</p>
+    <p>你可以查阅浏览器兼容性部分的文档来进一步了解有关信息。</p>
+    <br>
+    <br>
+    <br>
+    <h3>下面介绍的快捷键大部分可用于 jetbrains 全家桶的IDE(pycharm、intellij、webstorm、phpstorm)</h3>
+
+    <div id="cnblogs_post_body" class="blogpost-body">
+        <span title-type="h1" class="header__span"><h1 class="header__dev" id="wfGjjnfM"><b class="dev__fe"><i>1</i></b><span class="dev__slash">|</span><b class="dev__ux"><i>0</i></b><b class="dev__developer"><span class="dev__title">IntelliJ IDEA 快捷键</span></b></h1></span><br>
+        <h3><strong><a id="user-content-1-editing编辑" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#1-editing%E7%BC%96%E8%BE%91"></a>1. Editing(编辑)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>Ctrl +Space</strong></td>
+                <td align="left"><strong>基本代码补全，输入字母按后列出匹配的词组</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+Space</strong></td>
+                <td align="left"><strong>智能代码补全，列出与预期类型一致的方法或变量</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+Space</strong></td>
+                <td align="left"><strong>补全类名</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+Enter</strong></td>
+                <td align="left"><strong>补全语句</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+P</strong></td>
+                <td align="left"><strong>显示方法参数</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Q</strong></td>
+                <td align="left"><strong>显示注释文档</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F1</strong></td>
+                <td align="left"><strong>显示外部文档</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+mouse over code</strong></td>
+                <td align="left"><strong>显示描述信息</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F1</strong></td>
+                <td align="left"><strong>显示提示、警告、错误等信息</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Insert</strong></td>
+                <td align="left"><strong>生成代码，生成 Getter、Setter、构造器等</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+O</strong></td>
+                <td align="left"><strong>重写父类方法</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+I</strong></td>
+                <td align="left"><strong>实现接口方法</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+T</strong></td>
+                <td align="left"><strong>使用(if..else, try..catch, for, synchronized 等)包围选中语句</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+/</strong></td>
+                <td align="left"><strong>使用“//”注释或取消注释</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+/</strong></td>
+                <td align="left"><strong>使用“/** **/”注释或取消注释</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+W</strong></td>
+                <td align="left"><strong>选择代码块，连续按会增加选择外层的代码块</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+W</strong></td>
+                <td align="left"><strong>与“Ctrl+W”相反，减少选择代码块</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Q</strong></td>
+                <td align="left"><strong>显示类描述信息</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Enter</strong></td>
+                <td align="left"><strong>显示快速修复列表</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+L</strong></td>
+                <td align="left"><strong>格式化代码</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+O</strong></td>
+                <td align="left"><strong>优化 Imports</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+I</strong></td>
+                <td align="left"><strong>自动优化代码缩进</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Tab/Shift+Tab</strong></td>
+                <td align="left"><strong>缩进代码/取消缩进代码</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+X or Shift+Delete</strong></td>
+                <td align="left"><strong>剪切代码，未选择代码时剪切当前行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+C or Ctrl+Insert</strong></td>
+                <td align="left"><strong>复制代码，未选择代码时复制当前行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+V or Shift+Insert</strong></td>
+                <td align="left"><strong>粘贴代码</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+V</strong></td>
+                <td align="left"><strong>粘贴最近复制的内容</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+D</strong></td>
+                <td align="left"><strong>重复代码，未选择代码时重复当前行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Y</strong></td>
+                <td align="left"><strong>删除行，未选择时删除当前行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+J</strong></td>
+                <td align="left"><strong>合并多行为一行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Enter</strong></td>
+                <td align="left"><strong>分割一行为多行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+Enter</strong></td>
+                <td align="left"><strong>使光标所在位置的下一行为新行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+U</strong></td>
+                <td align="left"><strong>对选中内容进行大小写切换</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+]/[</strong></td>
+                <td align="left"><strong>选中到代码块的开始/结束</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Delete</strong></td>
+                <td align="left"><strong>删除从光标所在位置到单词结束位置的字符</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Backspace</strong></td>
+                <td align="left"><strong>删除从单词起始位置到光标所在位置的字符</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+NumPad+/-</strong></td>
+                <td align="left"><strong>展开或收起代码块</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+NumPad+</strong></td>
+                <td align="left"><strong>展开所有代码块</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+NumPad-</strong></td>
+                <td align="left"><strong>收起所有代码块</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F4</strong></td>
+                <td align="left"><strong>关闭当前编辑页</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>CTRL+ALT+B</strong></td>
+                <td align="left"><strong>查找接口的实现类</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>CTRL+ALT+SHIFT+C</strong></td>
+                <td align="left"><strong>复制类的全类名</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-2-searchreplace查找替换" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#2-searchreplace%E6%9F%A5%E6%89%BE%E6%9B%BF%E6%8D%A2"></a>2. Search/Replace(查找/替换)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>Double Shift</strong></td>
+                <td align="left"><strong>Search everywhere</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F</strong></td>
+                <td align="left"><strong>查找</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>F3</strong></td>
+                <td align="left"><strong>查找下一个</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F3</strong></td>
+                <td align="left"><strong>查找上一个</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+R</strong></td>
+                <td align="left"><strong>替换</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+F</strong></td>
+                <td align="left"><strong>目录内查找</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+R</strong></td>
+                <td align="left"><strong>目录内替换</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+S</strong></td>
+                <td align="left"><strong>语法模板搜索</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+M</strong></td>
+                <td align="left"><strong>语法模板替换</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-3-usage-search使用搜索" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#3-usage-search%E4%BD%BF%E7%94%A8%E6%90%9C%E7%B4%A2"></a>3. Usage Search(使用搜索)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>Alt+F7</strong></td>
+                <td align="left"><strong>查找被使用处</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F7</strong></td>
+                <td align="left"><strong>查找当前文件中的使用处</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+F7</strong></td>
+                <td align="left"><strong>高亮当前文件中的使用处</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+F7</strong></td>
+                <td align="left"><strong>列出使用者</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-4-compile-and-run编译运行" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#4-compile-and-run%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C"></a>4. Compile and Run(编译/运行)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>Ctrl+F9</strong></td>
+                <td align="left"><strong>Make 模块、项目</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+F9</strong></td>
+                <td align="left"><strong>编译选中的文件、模块、项目</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Shift+F10</strong></td>
+                <td align="left"><strong>选择配置后运行代码</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Shift+F9</strong></td>
+                <td align="left"><strong>选择配置后调试代码</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F10</strong></td>
+                <td align="left"><strong>运行代码</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F9</strong></td>
+                <td align="left"><strong>调试代码</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F2</strong></td>
+                <td align="left"><strong>停止调试</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+F10</strong></td>
+                <td align="left"><strong>运行代码</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-5-debugging调试" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#5-debugging%E8%B0%83%E8%AF%95"></a>5. Debugging(调试)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>F8</strong></td>
+                <td align="left"><strong>单步调试，不进入函数内部</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>F7</strong></td>
+                <td align="left"><strong>单步调试，进入函数内部</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F7/Alt+Shift+F7</strong></td>
+                <td align="left"><strong>选择要进入的函数/强制进入函数</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F8</strong></td>
+                <td align="left"><strong>跳出函数</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+F9</strong></td>
+                <td align="left"><strong>运行到断点</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+F8</strong></td>
+                <td align="left"><strong>执行表达式查看结果</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>F9</strong></td>
+                <td align="left"><strong>继续执行，进入下一个断点或执行完程序</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F8</strong></td>
+                <td align="left"><strong>设置/取消当前行断点</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+F8</strong></td>
+                <td align="left"><strong>查看断点</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-6-navigation导航" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#6-navigation%E5%AF%BC%E8%88%AA"></a>6. Navigation(导航)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>Double Shift</strong></td>
+                <td align="left"><strong>查找所有</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+N</strong></td>
+                <td align="left"><strong>查找类</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+N</strong></td>
+                <td align="left"><strong>查找文件</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+Shift+N</strong></td>
+                <td align="left"><strong>Go to symbol</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Right/Left</strong></td>
+                <td align="left"><strong>左右切换 Tab</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>F12</strong></td>
+                <td align="left"><strong>回到上一个打开的窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Esc</strong></td>
+                <td align="left"><strong>焦点回到编辑器</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+Esc</strong></td>
+                <td align="left"><strong>隐藏打开的视图</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+F4</strong></td>
+                <td align="left"><strong>关闭当前 Tab</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+G</strong></td>
+                <td align="left"><strong>跳到指定行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+E</strong></td>
+                <td align="left"><strong>显示最近打开的文件</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+Left</strong></td>
+                <td align="left"><strong>跳到光标的上一个位置</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+Right</strong></td>
+                <td align="left"><strong>跳到光标的下一个位置</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+Backspace</strong></td>
+                <td align="left"><strong>跳到上一个编辑处</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+F1</strong></td>
+                <td align="left"><strong>选择当前文件显示在不同的视图中</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+B or Ctrl+Click</strong></td>
+                <td align="left"><strong>跳到类声明处</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+B</strong></td>
+                <td align="left"><strong>跳到实现类/方法</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+I</strong></td>
+                <td align="left"><strong>显示类/变量/方法定义</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+B</strong></td>
+                <td align="left"><strong>跳到类型定义处</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+U</strong></td>
+                <td align="left"><strong>跳到父类/方法</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Up</strong></td>
+                <td align="left"><strong>光标移动到上一个方法</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Down</strong></td>
+                <td align="left"><strong>光标移动到下一个方法</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+]</strong></td>
+                <td align="left"><strong>光标移动到代码块的起始位置</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+]</strong></td>
+                <td align="left"><strong>光标移动到代码块的结束位置</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F12</strong></td>
+                <td align="left"><strong>显示文件结构</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+H</strong></td>
+                <td align="left"><strong>显示类层级</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+H</strong></td>
+                <td align="left"><strong>显示方法层级</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+H</strong></td>
+                <td align="left"><strong>显示类/方法调用层级</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>F2</strong></td>
+                <td align="left"><strong>光标移动到下一个错误</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F2</strong></td>
+                <td align="left"><strong>标移动到上一个错误</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>F4</strong></td>
+                <td align="left"><strong>编辑源码，光标移到编辑器内</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Enter</strong></td>
+                <td align="left"><strong>查看源码，光标没移到编辑器内</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Home</strong></td>
+                <td align="left"><strong>显示导航面包屑</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>F11</strong></td>
+                <td align="left"><strong>当前行设置书签</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F11</strong></td>
+                <td align="left"><strong>显示所有书签</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F11</strong></td>
+                <td align="left"><strong>设置书签号[0-9]</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+[0-9]</strong></td>
+                <td align="left"><strong>跳到书签号[0-9]所在位置</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-7-refactoring重构" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#7-refactoring%E9%87%8D%E6%9E%84"></a>7. Refactoring(重构)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>F5</strong></td>
+                <td align="left"><strong>复制类</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>F6</strong></td>
+                <td align="left"><strong>移动类</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Delete</strong></td>
+                <td align="left"><strong>安全删除，删除前会提示调用处</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+F6</strong></td>
+                <td align="left"><strong>重命名</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+F6</strong></td>
+                <td align="left"><strong>重构方法参数、Exception 等</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+N</strong></td>
+                <td align="left"><strong>合并多行为一行</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+M</strong></td>
+                <td align="left"><strong>提取为新方法</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+V</strong></td>
+                <td align="left"><strong>提取为新变量</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+F</strong></td>
+                <td align="left"><strong>提取为对象新属性</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+C</strong></td>
+                <td align="left"><strong>提取为新静态常量</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+P</strong></td>
+                <td align="left"><strong>提取参数</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-8-vcslocal-history版本控制本地历史" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#8-vcslocal-history%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%9C%AC%E5%9C%B0%E5%8E%86%E5%8F%B2"></a>8. VCS/Local History(版本控制/本地历史)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>Ctrl+K</strong></td>
+                <td align="left"><strong>提交改动到 VCS</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+T</strong></td>
+                <td align="left"><strong>从 VCS 上更新</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Shift+C</strong></td>
+                <td align="left"><strong>查看最近的改动记录</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+BackQuote(`)</strong></td>
+                <td align="left"><strong>显示 VCS 操作列表</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-9-live-templates动态模板" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#9-live-templates%E5%8A%A8%E6%80%81%E6%A8%A1%E6%9D%BF"></a>9. Live Templates(动态模板)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+J</strong></td>
+                <td align="left"><strong>使用 Live Template 包围选中代码</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+J</strong></td>
+                <td align="left"><strong>快速插入 Live Template</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>iter</strong></td>
+                <td align="left"><strong>快速生成 for…in 语句</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>inst</strong></td>
+                <td align="left"><strong>快速生成”if instanceof ”语句</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>itco</strong></td>
+                <td align="left"><strong>快速生成 iterator 的 for 循环</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>itit</strong></td>
+                <td align="left"><strong>快速生成 iterator 的 while 循环</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>itli</strong></td>
+                <td align="left"><strong>快速生成 list 的 for(i)循环</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>psf</strong></td>
+                <td align="left"><strong>快速生成“public static final” 语句</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>thr</strong></td>
+                <td align="left"><strong>快速生成“throw new” 语句</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><strong><a id="user-content-10-general代码生成" class="anchor" href="https://github.com/peekpop/IntelliJ-IDEA-Technical-Tutorial/blob/master/src/keymap.md#10-general%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"></a>10. General(代码生成)</strong></h3>
+        <table>
+            <thead>
+            <tr><th align="left"><strong>快捷键</strong></th><th align="left"><strong>介绍</strong></th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td align="left"><strong>Alt+0</strong></td>
+                <td align="left"><strong>聚焦到 Messages 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+1</strong></td>
+                <td align="left"><strong>聚焦到 Project 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+2</strong></td>
+                <td align="left"><strong>聚焦到 Favorite 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+3</strong></td>
+                <td align="left"><strong>聚焦到 Find 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+4</strong></td>
+                <td align="left"><strong>聚焦到 Run 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+5</strong></td>
+                <td align="left"><strong>聚焦到 Debug 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+6</strong></td>
+                <td align="left"><strong>聚焦到 TODO 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+7</strong></td>
+                <td align="left"><strong>聚焦到 Structure 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+8</strong></td>
+                <td align="left"><strong>聚焦到 Hierarchy 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+9</strong></td>
+                <td align="left"><strong>聚焦到 Change 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+S</strong></td>
+                <td align="left"><strong>保存文件</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+Y</strong></td>
+                <td align="left"><strong>与本地文件同步</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+F12</strong></td>
+                <td align="left"><strong>切换最大化编辑</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Shift+F</strong></td>
+                <td align="left"><strong>添加到收藏夹</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+Shift+I</strong></td>
+                <td align="left"><strong>检查当前文件，包括 Javadoc 问题、可能存在的 bug 等</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+BackQuote (`)</strong></td>
+                <td align="left"><strong>模式切换，包括文本外观、快捷键、编辑器外观、代码样式。</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+S</strong></td>
+                <td align="left"><strong>打开 settings 窗口</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Alt+Shift+S</strong></td>
+                <td align="left"><strong>打开项目结构对话框</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Shift+A</strong></td>
+                <td align="left"><strong>Find Action</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Ctrl+Tab</strong></td>
+                <td align="left"><strong>选项卡和工具窗口之间切换</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Alt+F12</strong></td>
+                <td align="left"><strong>打开命令终端</strong></td>
+            </tr>
+            <tr>
+                <td align="left"><strong>Shift+Shift</strong></td>
+                <td align="left"><strong>搜索文件</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <br><p class="essaySuffix-eof">__EOF__</p></div>
+
+
+</body>
+</html>
