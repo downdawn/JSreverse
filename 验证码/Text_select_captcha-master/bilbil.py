@@ -73,8 +73,8 @@ class BilBil(object):
         lan_y = 290/384
         for p in plan:
             x, y = p['place']
-            ActionChains(self.browser).move_by_offset(X-40 + x*lan_x, Y + y*lan_y).click().perform()
-            ActionChains(self.browser).move_by_offset(-(X-40 + x*lan_x), -(Y + y*lan_y)).perform()  # 将鼠标位置恢复到移动前
+            ActionChains(self.browser).move_by_offset(X-15 + x*lan_x, Y + y*lan_y).click().perform()
+            ActionChains(self.browser).move_by_offset(-(X-15 + x*lan_x), -(Y + y*lan_y)).perform()  # 将鼠标位置恢复到移动前
             time.sleep(0.5)
 
         xpath = "/html/body/div[2]/div[2]/div[6]/div/div/div[3]/a/div"
