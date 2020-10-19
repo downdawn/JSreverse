@@ -136,4 +136,10 @@ https://github.com/JiageWang/hand-writing-recognition
 
 ##### 2020/08/31 优化识别单字的卷积神经网络
 ##### 2020/09/01提交 识别准确率从75%提升到90%，目标检测模型从yolo-tiny替换成yolo
-模型大小从50M增加到200M,大幅减少漏检测的情况，如果要使用yolo-tiny仅需要修改setting.py中相关路径  
+模型大小从50M增加到200M,大幅减少漏检测的情况，如果要使用yolo-tiny仅需要修改setting.py中相关路径
+
+##### 安装torch
+##### 到https://download.pytorch.org/whl/torch_stable.html下载对应版本，torch===1.2.0 torchvision===0.4.0
+
+##### 安装kenlm
+##### pip install https://github.com/kpu/kenlm/archive/master.zip

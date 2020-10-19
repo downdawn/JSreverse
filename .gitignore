@@ -4,3 +4,6 @@
 *.py[cod]
 __pycache__.*
 package-lock.json
+*.pth
+*.klm
+*.whl

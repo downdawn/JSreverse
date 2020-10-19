@@ -1,5 +1,4 @@
 numpy==1.18.5
-torchvision
 tensorboard
 terminaltables
 matplotlib
@@ -7,8 +6,3 @@ pillow
 selenium
 requests
 
-安装torch
-到https://download.pytorch.org/whl/torch_stable.html下载对应版本，torch===1.2.0 torchvision===0.4.0
-
-安装kenlm
-pip install https://github.com/kpu/kenlm/archive/master.zip
