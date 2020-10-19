@@ -16,7 +16,7 @@ with open(r"test1.png", "rb") as f:
     ocr_bytes = f.read()
 
 # 打开验证码图片
-with open(r"test2.jpg", "rb") as f:
+with open(r"captcha.jpg", "rb") as f:
     captcha_bytes = f.read()
 
 # 2. 初始化；model_type 可选: [ModelType.OCR, ModelType.Captcha]

@@ -20,6 +20,7 @@ class HandleVideo(object):
         """获取dytk和tac参数"""
         # share_id = '88445518961'
         _share_url = share_url.format(self.share_id)
+        print(_share_url)
 
         try:
             response = requests.get(url=_share_url, headers=pc_headers)

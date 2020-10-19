@@ -25,6 +25,7 @@ class DetailCssMap(object):
     def get_review_html(self):
         """初步获取点评页面的HTML"""
         url = review_url.format(self.shop_id)
+        print(url)
         response = requests.get(url=url, headers=self.headers)
         self.review_html = response.text
 
@@ -121,6 +122,7 @@ class DetailCssMap(object):
         addr_font_list = self.get_font_dict(self.address_svg_url, add_reg)
         print("addr_font_list", addr_font_list)
 
+        # 刷新html，替换加密后的地址字体
         reg = '<bb class="(.*?)"></bb>'
         reg_sub = '<bb class="{}"></bb>'
         self.refresh_html(reg, reg_sub, addr_font_list, method=self.class_to_font)
@@ -130,22 +132,26 @@ class DetailCssMap(object):
         phone_font_list = self.get_font_dict(self.phone_svg_url, phone_reg)
         print("phone_font_list", phone_font_list)
 
+        # 刷新html，替换加密后的电话字体
         reg = '<cc class="(.*?)"></cc>'
         reg_sub = '<cc class="{}"></cc>'
         self.refresh_html(reg, reg_sub, phone_font_list, method=self.class_to_font)
 
         # 评论
-        review_reg = '<textPath.*?href="#(.*?)".*?>(.*?)<'
+        # review_reg = '<textPath.*?href="#(.*?)".*?>(.*?)<'
+        review_reg = '<text.*?y="(.*?)">(.*?)<'
         review_font_list = self.get_font_dict(self.review_svg_url, review_reg)
         print("review_font_list", review_font_list)
 
-        review_reg = '<path id="(.*?)" d="M0 (.*?) H600"/>'
-        review_font_index = self.get_font_dict(self.review_svg_url, review_reg, flag=True)
-        print("review_font_index", review_font_index)
+        # review_reg = '<path id="(.*?)" d="M0 (.*?) H600"/>'
+        # review_font_index = self.get_font_dict(self.review_svg_url, review_reg, flag=True)
+        # print("review_font_index", review_font_index)
 
+        # 刷新html，替换加密后的评论字体
         reg = '<svgmtsi class="(.*?)"></svgmtsi>'
         reg_sub = '<svgmtsi class="{}"></svgmtsi>'
-        self.refresh_html(reg, reg_sub, review_font_list, method=self.class_to_font, review_index=review_font_index)
+        # self.refresh_html(reg, reg_sub, review_font_list, method=self.class_to_font, review_index=review_font_index)
+        self.refresh_html(reg, reg_sub, review_font_list, method=self.class_to_font)
 
     def parse_data(self):
         """解析替换后的html，获取地址，电话，评论信息"""

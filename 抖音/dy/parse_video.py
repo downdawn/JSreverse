@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # 抖音无水印视频解析
-
+import json
 import re
 
 import requests
@@ -87,10 +87,13 @@ class ParseVideo(object):
 
         response = requests.get(url=url, headers=self.headers)
         data = response.json()
+        print(json.dumps(data))
+        # v_url = data['item_list'][0]['video']['play_addr']['url_list'][0]
+        # video_id = re.search(r'video_id=(.*?)&', v_url).group(1)
 
-        v_url = data['item_list'][0]['video']['play_addr']['url_list'][0]
+        video_id = data['item_list'][0]['video']['vid']
+        dynamic_cover = data['item_list'][0]['video']['dynamic_cover']["url_list"][0]
 
-        video_id = re.search(r'video_id=(.*?)&', v_url).group(1)
         print(video_id)
 
         return video_id
