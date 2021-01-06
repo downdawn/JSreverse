@@ -24,6 +24,13 @@ driver.get("https://login.taobao.com/member/login.jhtml?spm=a21bo.2017.754894437
 script = "Object.defineProperty(navigator,'webdriver',{get: ()=> false,});"
 driver.execute_script(script)
 
+# driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+#     "source": """
+#         Object.defineProperty(navigator, 'webdriver', {
+#           get: () => undefined
+#         })
+#       """})
+
 usernameInput = driver.find_element_by_xpath("//input[@id='fm-login-id']")
 passwordInput = driver.find_element_by_xpath("//input[@id='fm-login-password']")
 loginBtn = driver.find_element_by_xpath("//button[@tabindex='3']")

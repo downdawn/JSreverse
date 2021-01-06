@@ -26,7 +26,7 @@ class GeeTest(object):
         self.sess = requests.Session()
 
     def get_gt_challenge(self):
-        url = "https://captcha1.scrape.center/api/init?t={}"
+        url = "https://www.geetest.com/demo/gt/register-slide-official?t={}"
         resp = self.sess.get(url.format(int(time.time()*1000)), headers=self.headers)
         print(resp.url)
         logger.debug(resp.text)
@@ -70,7 +70,7 @@ class GeeTest(object):
     def get_php1(self, my_w):
         url = "https://api.geetest.com/get.php?gt={}&challenge={}&lang=zh-cn&pt=0&client_type=web&w={}&callback=geetest_{}"
         res = self.sess.get(url=url.format(self.gt, self.challenge, my_w, int(time.time()*1000), headers=self.headers))
-        print("get_php: post w: {}".format(res.text))
+        print("get_php: post w: {}".format(res.text.encode('utf8').decode('unicode_escape')))
 
     def ajax_php(self, my_enc):
         url = "https://api.geetest.com/ajax.php?gt={}&challenge={}&lang=zh-cn&pt=0&client_type=web&w={}&callback=geetest_{}"
@@ -82,11 +82,12 @@ class GeeTest(object):
         # url = "https://api.geetest.com/get.php?is_next=true&type={}&gt={}&challenge={}&lang=zh-cn&https=true&protocol=https%3A%2F%2F&offline=false&product=float&api_server=api.geetest.com&isPC=true&width=100%25&callback=geetest_{}"
         url = "https://api.geetest.com/get.php?is_next=true&type=slide3&gt={}&challenge={}&lang=zh-cn&https=true&protocol=https%3A%2F%2F&offline=false&product=embed&api_server=api.geetest.com&isPC=true&width=100%25&callback=geetest_{}"
         res = self.sess.get(url=url.format(self.gt, self.challenge, int(time.time() * 1000), headers=self.headers))
-        print("get_php2: post w: {}".format(res.text))
+        print("get_php2: post w: {}".format(res.text.encode('utf8').decode('unicode_escape')))
 
     def ajax_php2(self, my_enc):
         url = "https://api.geetest.com/ajax.php?gt={}&challenge={}&lang=zh-cn&pt=0&client_type=web&w={}&callback=geetest_{}"
         """轨迹"""
+        url = url.format(self.gt, self.challenge)
 
     pass
 

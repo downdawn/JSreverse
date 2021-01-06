@@ -87,7 +87,7 @@ class ParseVideo(object):
 
         response = requests.get(url=url, headers=self.headers)
         data = response.json()
-        print(json.dumps(data))
+        # print(json.dumps(data))
         # v_url = data['item_list'][0]['video']['play_addr']['url_list'][0]
         # video_id = re.search(r'video_id=(.*?)&', v_url).group(1)
 

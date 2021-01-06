@@ -36,15 +36,15 @@ const generator = require("@babel/generator").default;
 /**********************************************************
 
 命令行输入，获取混淆前的js源代码及解混淆后生成的新的js代码。
-eg: node decode_obfuscator.js encode.js decode_result.js
+eg: node decode_obfuscator.js encode.js udc.js
 encode.js 混淆前js源代码的路径
-decode_result.js 生成新js代码的路径
+udc.js 生成新js代码的路径
 默认 混淆前js源代码的路径为 ./encode.js
-默认 生成新js代码的路径为   ./decode_result.js
+默认 生成新js代码的路径为   ./udc.js
 
 ***********************************************************/
 
-let encode_file = "./encode.js",decode_file = "./decode_result.js";
+let encode_file = "./encode.js",decode_file = "./udc.js";
 
 if (process.argv.length > 2)
 {
