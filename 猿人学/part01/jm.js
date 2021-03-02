@@ -1,38 +1,96 @@
-// const CryptoJS = require('crypto-js');
-//
-// var hex_md5 = CryptoJS.MD5
+function oo0O0(mw) {
+    window.b = '';
+    for (var i = 0, len = window.a.length; i < len; i++) {
+        console.log(window.a[i]);
+        window.b += String[document.e + document.g](window.a[i][document.f + document.h]() - i - window.c)
+    }
+    var U = ['W5r5W6VdIHZcT8kU', 'WQ8CWRaxWQirAW=='];
+    var J = function(o, E) {
+        o = o - 0x0;
+        var N = U[o];
+        if (J['bSSGte'] === undefined) {
+            var Y = function(w) {
+                var m = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/='
+                  , T = String(w)['replace'](/=+$/, '');
+                var A = '';
+                for (var C = 0x0, b, W, l = 0x0; W = T['charAt'](l++); ~W && (b = C % 0x4 ? b * 0x40 + W : W,
+                C++ % 0x4) ? A += String['fromCharCode'](0xff & b >> (-0x2 * C & 0x6)) : 0x0) {
+                    W = m['indexOf'](W)
+                }
+                return A
+            };
+            var t = function(w, m) {
+                var T = [], A = 0x0, C, b = '', W = '';
+                w = Y(w);
+                for (var R = 0x0, v = w['length']; R < v; R++) {
+                    W += '%' + ('00' + w['charCodeAt'](R)['toString'](0x10))['slice'](-0x2)
+                }
+                w = decodeURIComponent(W);
+                var l;
+                for (l = 0x0; l < 0x100; l++) {
+                    T[l] = l
+                }
+                for (l = 0x0; l < 0x100; l++) {
+                    A = (A + T[l] + m['charCodeAt'](l % m['length'])) % 0x100,
+                    C = T[l],
+                    T[l] = T[A],
+                    T[A] = C
+                }
+                l = 0x0,
+                A = 0x0;
+                for (var L = 0x0; L < w['length']; L++) {
+                    l = (l + 0x1) % 0x100,
+                    A = (A + T[l]) % 0x100,
+                    C = T[l],
+                    T[l] = T[A],
+                    T[A] = C,
+                    b += String['fromCharCode'](w['charCodeAt'](L) ^ T[(T[l] + T[A]) % 0x100])
+                }
+                return b
+            };
+            J['luAabU'] = t,
+            J['qlVPZg'] = {},
+            J['bSSGte'] = !![]
+        }
+        var H = J['qlVPZg'][o];
+        return H === undefined ? (J['TUDBIJ'] === undefined && (J['TUDBIJ'] = !![]),
+        N = J['luAabU'](N, E),
+        J['qlVPZg'][o] = N) : N = H,
+        N
+    };
+//     console.log(J('0x0', ']dQW'));
+//     console.log(J('0x1', 'GTu!'));
+
+    eval(atob(window['b'])[J('0x0', ']dQW')](J('0x1', 'GTu!'), '\x27' + mw + '\x27'));
+
+//     eval(atob(window['b'])["replace"]("mwqqppz", '\x27' + mw + '\x27'));
+    return ''
+}
+
 var hexcase = 0;
 var b64pad = "";
 var chrsz = 16;
-
 function hex_md5(a) {
     return binl2hex(core_md5(str2binl(a), a.length * chrsz))
 }
-
 function b64_md5(a) {
     return binl2b64(core_md5(str2binl(a), a.length * chrsz))
 }
-
 function str_md5(a) {
     return binl2str(core_md5(str2binl(a), a.length * chrsz))
 }
-
 function hex_hmac_md5(a, b) {
     return binl2hex(core_hmac_md5(a, b))
 }
-
 function b64_hmac_md5(a, b) {
     return binl2b64(core_hmac_md5(a, b))
 }
-
 function str_hmac_md5(a, b) {
     return binl2str(core_hmac_md5(a, b))
 }
-
 function md5_vm_test() {
     return hex_md5("abc") == "900150983cd24fb0d6963f7d28e17f72"
 }
-
 function core_md5(p, k) {
     p[k >> 5] |= 128 << ((k) % 32);
     p[(((k + 64) >>> 9) << 4) + 14] = k;
@@ -116,33 +174,28 @@ function core_md5(p, k) {
     }
     return Array(o, n, m, l)
 }
-
 function md5_cmn(h, e, d, c, g, f) {
     return safe_add(bit_rol(safe_add(safe_add(e, h), safe_add(c, f)), g), d)
 }
-
 function md5_ff(g, f, k, j, e, i, h) {
     return md5_cmn((f & k) | ((~f) & j), g, f, e, i, h)
 }
-
 function md5_gg(g, f, k, j, e, i, h) {
     return md5_cmn((f & j) | (k & (~j)), g, f, e, i, h)
 }
-
 function md5_hh(g, f, k, j, e, i, h) {
     return md5_cmn(f ^ k ^ j, g, f, e, i, h)
 }
-
 function md5_ii(g, f, k, j, e, i, h) {
     return md5_cmn(k ^ (f | (~j)), g, f, e, i, h)
 }
-
 function core_hmac_md5(c, f) {
     var e = str2binl(c);
     if (e.length > 16) {
         e = core_md5(e, c.length * chrsz)
     }
-    var a = Array(16), d = Array(16);
+    var a = Array(16)
+      , d = Array(16);
     for (var b = 0; b < 16; b++) {
         a[b] = e[b] ^ 909522486;
         d[b] = e[b] ^ 1549556828
@@ -150,17 +203,14 @@ function core_hmac_md5(c, f) {
     var g = core_md5(a.concat(str2binl(f)), 512 + f.length * chrsz);
     return core_md5(d.concat(g), 512 + 128)
 }
-
 function safe_add(a, d) {
     var c = (a & 65535) + (d & 65535);
     var b = (a >> 16) + (d >> 16) + (c >> 16);
     return (b << 16) | (c & 65535)
 }
-
 function bit_rol(a, b) {
     return (a << b) | (a >>> (32 - b))
 }
-
 function str2binl(d) {
     var c = Array();
     var a = (1 << chrsz) - 1;
@@ -169,7 +219,6 @@ function str2binl(d) {
     }
     return c
 }
-
 function binl2str(c) {
     var d = "";
     var a = (1 << chrsz) - 1;
@@ -178,7 +227,6 @@ function binl2str(c) {
     }
     return d
 }
-
 function binl2hex(c) {
     var b = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
     var d = "";
@@ -187,7 +235,6 @@ function binl2hex(c) {
     }
     return d
 }
-
 function binl2b64(d) {
     var c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     var f = "";
@@ -204,12 +251,20 @@ function binl2b64(d) {
     return f
 }
 
-var timestamp=Date.parse(new Date())
-f = hex_md5(timestamp.toString()) + "|" + timestamp/1000
-console.log(f)
+// window.f = hex_md5(mwqqppz)
 
-// 980620cb1ed2be632f0ea3195a1be250|1603763795
-// c88f248032ff7d824c35ae6ec1f0cd92丨1603763696
-// c88f248032ff7d824c35ae6ec1f0cd92%E4%B8%A81603763696
-//
-// 26c1597fba872d8615aa88e06fec1e2a%E4%B8%A81603764021
+function get_param(ts){
+    var timestamp = parseInt(ts)
+
+    var mwqqppz = timestamp + 100000000
+    console.log(mwqqppz, timestamp);
+
+    var m = hex_md5(mwqqppz.toString()) + '丨' + mwqqppz / 1000;
+    // console.log(m)
+    return m
+}
+
+module.exports = {
+    "get_param": get_param
+};
+

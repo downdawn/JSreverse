@@ -8,7 +8,10 @@ import requests
 
 def main():
     sums = 0
-    headers = {"User-Agent": "yuanrenxue.project", }
+    headers = {
+        'Cookie': 'sessionid=uf9wxr7flt7mfflfbdpd5k944d3r8bx5',
+        'User-Agent': 'yuanrenxue.project',
+    }
     t = int(time.time())
     t1 = int(t / 2)
     t2 = int(t / 2 - math.floor(random.random() * 50 + 1))
@@ -25,7 +28,6 @@ def main():
             print(each["value"])
             sums += each["value"]
     print(sums)
-    # 219388
 
 
 if __name__ == "__main__":

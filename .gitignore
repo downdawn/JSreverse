@@ -7,3 +7,6 @@ package-lock.json
 *.pth
 *.klm
 *.whl
+package.json
+/test
+/decode_obfuscator
