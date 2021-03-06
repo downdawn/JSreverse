@@ -22,7 +22,7 @@ class Match01(object):
     def get_data(self, page, param):
         headers = {
             "User-Agent": "yuanrenxue.project",
-            "Cookie": "Hm_lvt_0362c7a08a9a04ccf3a8463c590e1e2f=1614307321; qpfccr=true; Hm_lvt_c99546cf032aaa5a679230de9a95c7db=1614329505,1614568433,1614569240; no-alert2=true; tk=3426883241855233739; sessionid=27z6tcd1rkj609blbbus8zbgqfjf0n14; Hm_lvt_9bcbda9cbf86757998a2339a0437208e=1614568473,1614578375; Hm_lpvt_9bcbda9cbf86757998a2339a0437208e=1614578375; Hm_lpvt_c99546cf032aaa5a679230de9a95c7db=1614581413",
+            "Cookie": "sessionid=7dlghsdspluvl6iii7b0953dlv1ha293",
         }
         params = {
             "page": page,

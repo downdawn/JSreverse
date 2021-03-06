@@ -2,9 +2,6 @@
 
 import requests
 
-PROXY_USERNAME = "admin"
-PROXY_PASSWORD = "downdawn"
-
 
 class Challenge03(object):
     def __init__(self):
@@ -23,7 +20,7 @@ class Challenge03(object):
 
             headers = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
-                "Cookie": "Hm_lvt_337e99a01a907a08d00bed4a1a52e35d=1614306156,1614326443,1614569187; sessionid=4c6mzpfh00oe6ie2t0um8oag3img1773; Hm_lpvt_337e99a01a907a08d00bed4a1a52e35d=1614570075",
+                "Cookie": "sessionid=4c6mzpfh00oe6ie2t0um8oag3img1773;",
             }
             data = {"page": page}
             try:

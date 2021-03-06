@@ -21,6 +21,7 @@ class Match03(object):
             'Accept-Encoding': 'gzip, deflate',
             'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
         }
+        # 保证请求头的顺序不被打乱
         self.session.headers = headers
         response = self.session.post(url=self.logo_url)
         print(response.cookies)

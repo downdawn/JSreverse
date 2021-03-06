@@ -1,0 +1,887 @@
+
+    <meta charset="utf-8"><!DOCTYPE html>
+    <html lang="en" class="no-js">
+    <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>webpack初体验</title>
+    <link rel="stylesheet" href="/static/match/dist/css/style.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/asset/css/modallayer.min.css">
+
+    <style>header .menu a {
+        color: #00e7a9;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: 35px;
+        transition: .5s;
+        text-decoration: none;
+    }
+    </style>
+    <style>
+        .pagination-outer{ text-align: center; }
+        .pagination{
+            background: #151515;
+            font-family: 'Sniglet', cursive;
+            padding: 5px;
+            box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, 0.5);
+            border-radius: 50px;
+            display: inline-flex;
+            position: relative;
+        }
+        .pagination li a.page-link{
+            color: #bdc3c7;
+            background-color: #202020;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 33px;
+            height: 45px;
+            width: 50px;
+            margin: 0 2px 0 0;
+            border: 1px solid #202020;
+            border-top: 1px solid #353535;
+            box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.5);
+            border-radius: 0;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease 0s;
+        }
+        .pagination li.active a.page-link,
+        .pagination li a.page-link:hover,
+        .pagination li.active a.page-link:hover{
+            color: #2ecc71;
+            background: #151515;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+            border: 1px solid transparent;
+            border-bottom: 1px solid #252525;
+            box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, 0.8);
+        }
+        .pagination li:first-child a.page-link{ border-radius: 40px 0 0 40px; }
+        .pagination li:last-child a.page-link{
+            margin-right: 0;
+            border-radius: 0 40px 40px 0;
+        }
+        @media only screen and (max-width: 480px){
+            .pagination{
+                display: block;
+                border-radius: 20px;
+            }
+            .pagination li{
+                margin: 5px 2px;
+                display: inline-block;
+            }
+        }
+    </style>
+    <style>
+        table td{
+            /*border-top: none !important;*/
+            border-top: 1px solid rgba(87, 122, 119, 0.18) !important;
+            color: aqua !important;
+            font-size: 20px;
+        }
+        table {
+            width: 50% !important;
+            margin: 0 auto;
+        }
+
+    </style>
+    <style>
+        h2 {
+            width: 50% !important;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "HelveticaNeue-Light","Helvetica Neue Light";
+            color: white;
+            font-size: 12px;
+            background: #333;
+        }
+        form {
+            background: #111;
+            width: 300px;
+            margin: 30px auto;
+            border-radius: 0.4em;
+            border: 1px solid #191919;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+        }
+        form:after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 1px;
+            width: 100px;
+            left: 20%;
+            background: linear-gradient(to right, #111111, #444444, #b6b6b8, #444444, #111111);
+            top: 0;
+        }
+        form:before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 8px;
+            height: 5px;
+            border-radius: 50%;
+            left: 34%;
+            top: -7px;
+            box-shadow: 0 0 6px 4px #fff;
+        }
+        .inset {
+            padding: 20px;
+            border-top: 1px solid #19191a;
+        }
+        form h1 {
+            font-size: 18px;
+            text-shadow: 0 1px 0 black;
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 1px solid black;
+            position: relative;
+        }
+        form h1:after {
+            content: "";
+            display: block;
+            width: 250px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 50px;
+            pointer-events: none;
+            transform: rotate(70deg);
+            background: linear-gradient(50deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+        }
+        label {
+            color: #666;
+            display: block;
+            padding-bottom: 9px;
+        }
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 8px 5px;
+            background: linear-gradient(#1f2124, #27292c);
+            border: 1px solid #222;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-radius: 0.3em;
+            margin-bottom: 20px;
+        }
+        label[for=remember] {
+            color: white;
+            display: inline-block;
+            padding-bottom: 0;
+            padding-top: 5px;
+        }
+        input[type=checkbox] {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .p-container {
+            padding: 0 20px 20px 20px;
+        }
+        .p-container:after {
+            clear: both;
+            display: table;
+            content: "";
+        }
+        .p-container span {
+            display: block;
+            float: left;
+            color: #0d93ff;
+            padding-top: 8px;
+        }
+        input[type=button] {
+            padding: 5px 20px;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 10px 10px rgba(255, 255, 255, 0.1);
+            border-radius: 0.3em;
+            background: #0184ff;
+            color: white;
+            float: right;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        input[type=submit]:hover {
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -10px 10px rgba(255, 255, 255, 0.1);
+        }
+        input[type=text]:hover,
+        input[type=password]:hover,
+        label:hover ~ input[type=text],
+        label:hover ~ input[type=password] {
+            background: #27292c;
+        }
+    </style>
+
+</head>
+<body class="is-boxed has-animations">
+<div class="body-wrap">
+    <script src="/static/match/dist/js/html2canvas.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?c99546cf032aaa5a679230de9a95c7db";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style>
+        .modal-content p{
+            color: aliceblue;
+        }
+        .float-left{
+            /*margin-left: -250px;*/
+            position: absolute;
+            left: 160px;
+            top: 15px;
+        }
+        .float-left a{
+            /*font-size: 20px !important;*/
+
+            /*margin-left: 35%;*/
+        }
+        .float-left a:hover
+        {
+            color: #FF9900 !important;
+        }
+
+        .button-primary_2:hover{
+            color: #ff6600;
+        }
+
+        .button-primary_ts{
+            height: 1%;
+            width: 27%;
+            margin-left: 5.8%;
+            line-height: 0;
+        }
+        .button-primary_2{
+            width: 80px;
+            margin-left: 35%;
+        }
+        .button-primary_1{
+            background: #f06517 !important;
+        }
+
+
+
+    </style>
+    <!--<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">-->
+    <!--<div class="modal-dialog" role="document">-->
+    <!--<div class="modal-content" style="background-color: #0f1114;max-height: 500px; overflow:auto;">-->
+    <!--<div class="modal-header">-->
+    <!--<h4 class="modal-title" id="gridSystemModalLabel" style="color: #ffffff;">查看公告</h4>-->
+    <!--</div>-->
+    <!--<div class="game">-->
+    <!--<p style="text-align:center"><span style="font-size:10.5pt"><span style="font-family:等线"><strong><span style="font-size:18.0pt">猿人学-爬虫对抗比赛事宜</span></strong></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">1.</span><span style="font-size:11.0pt">共11道题，10道网页和JS相关，1道安卓so相关。</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">2.</span><span style="font-size:11.0pt">题目可以不按顺序做</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">3.</span><span style="font-size:11.0pt">评奖方式：</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:11.0pt">一等奖：至少答对9道题，且用时最短的（优先排名答对题数最多）</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:11.0pt">二等奖：至少答对7道题，且用时最短的前3名</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:11.0pt">三等奖：至少答对5道题，且用时最短的前5名</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:11.0pt">四等奖：至少答对3道题，且用时最短的前20名</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:11.0pt">参与奖：所有参赛者都获得定制爬虫体恤衫一件</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:11.0pt">答对越多，完成越快，名次越高（奖项不能重复获得哦~）</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">4.</span><span style="font-size:11.0pt">答完题后，需向 </span><span style="font-size:18.0pt"><a href="mailto:yuanrenxue@qq.com" style="color:#0563c1; text-decoration:underline"><span style="font-size:11.0pt">yuanrenxue@qq.com</span></a></span> <span style="font-size:11.0pt">发送邮件提交你的源代码，备注第几题和你的账号名，</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">以便检查代码是否有抄袭作弊等问题。</span></span></span></p>-->
+
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">5.</span><span style="font-size:11.0pt">如果你打算冲刺四等奖（含）以上，提交代码是必须的，否抓没有成绩。</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">6.</span><span style="font-size:11.0pt">如果你打算冲击头奖，第八题请你先看看，可能涉及图片训练，需要一些训练时间。</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">7.10</span><span style="font-size:11.0pt">月20日晚20:00-21:00 公布比赛结果</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">奖金在10月20日21点后开始发放</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">T</span><span style="font-size:11.0pt">恤在21日陆续由工厂发放（需要1-2周时间）</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">T</span><span style="font-size:11.0pt">恤到时会在群里通知填写邮寄地址（必须要填写参赛昵称，以便确认是否参赛）</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">8.</span><span style="font-size:11.0pt">题目或比赛规则可能有瑕疵，你提意见我们会改正，但不接受没完没了的杠，否则清除账号，请除群。</span></span></span></p>-->
+
+    <!--<p style="text-align:justify">&nbsp;</p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><strong><span style="font-size:18.0pt">赛事流程</span></strong></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp; &nbsp; 报名参赛<span style="font-family:&quot;Times New Roman&quot;,serif">&rarr;</span>进入比赛专用群<span style="font-family:&quot;Times New Roman&quot;,serif">&rarr;</span>分配注册邀请码（比赛前一天分配）<span style="font-family:&quot;Times New Roman&quot;,serif">&rarr;</span>自行注册参赛账号<span style="font-family:&quot;Times New Roman&quot;,serif">&rarr;</span>参加比赛</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><strong><span style="font-family:&quot;Times New Roman&quot;,serif">1.&nbsp;</span></strong><strong>报名参赛</strong><strong><span style="font-family:&quot;Times New Roman&quot;,serif">&amp;</span></strong><strong>进入比赛专用群</strong></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp; &nbsp;&nbsp;<strong>扫描二维码</strong>并备注&ldquo;<strong>报名</strong>&rdquo;，获得参赛资格和邀请码，等待被拉入比赛专用群</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><strong><span style="font-family:&quot;Times New Roman&quot;,serif">2.&nbsp;</span></strong><strong>分配注册邀请码</strong><strong><span style="font-family:&quot;Times New Roman&quot;,serif">&amp;</span></strong><strong>自行注册参赛账号</strong></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp; &nbsp; 在赛事开始<strong>前一天</strong>，会逐一为参赛选手发放账号注册码，并通过注册码自行注册比赛专用账号</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><strong><span style="font-family:&quot;Times New Roman&quot;,serif">3.</span></strong><strong>比赛流程(&nbsp;非常重要!)</strong></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp; &nbsp; 正式比赛将于<span style="font-family:&quot;Times New Roman&quot;,serif">2020</span>年<u><span style="font-family:&quot;Times New Roman&quot;,serif">10</span></u>月<u><span style="font-family:&quot;Times New Roman&quot;,serif">16</span></u>日<u><span style="font-family:&quot;Times New Roman&quot;,serif">20:00</span></u>开始。至<u><span style="font-family:&quot;Times New Roman&quot;,serif">_10&nbsp;</span></u>月<u><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;20</span></u>日<u><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;20:00</span></u>止，共历时<u><span style="font-family:&quot;Times New Roman&quot;,serif">_4_</span></u>天。截止后，<strong>统一收取比赛的代码进行代码审查</strong>（代码审查标准见下面）。若审查合格则按照排行榜的名次发放奖品。若代码审查不通过则&nbsp;<strong>无法获得奖品</strong>，该名次会继续&nbsp;<strong>向下顺延</strong>。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp;</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><strong><span style="font-family:&quot;Times New Roman&quot;,serif">4.&nbsp;</span></strong><strong>代码审查规则</strong></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; a.&nbsp;</span>提交的代码在任何时间都应该能够正常执行，并且顺利获取到每道题的答案。<strong><span style="color:red">代码执行失败或无法获取最后的结果</span></strong>，都判定为成绩<strong><span style="color:red">无效</span></strong>。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; b. cookie</span>参数<span style="font-family:&quot;Times New Roman&quot;,serif">&#45;&#45;&#45;&#45; sessionid</span>（即登录信息存储的<span style="font-family:&quot;Times New Roman&quot;,serif">cookie</span>）需要通过<strong><span style="color:red">请求协议(也就是利用代码模拟登录)</span></strong>的方式获取，不可传入定值（<strong><span style="color:red">因为登录信息只能保存几个小时，代码审查时登录信息会过期导致无法执行</span></strong>）登录接口没有任何加密和安全措施。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><strong><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; c.&nbsp;</span></strong>代码中若使用了<strong><span style="color:red">比赛禁用技术</span></strong>，会被取消成绩。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; d.&nbsp;</span>如遇到<strong><span style="color:red">雷同</span></strong>代码，相关的参赛选手都会被<strong><span style="color:red">取消</span></strong>成绩。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><strong>二、比赛禁用技术(<u><span style="color:#bf8f00">非常重要，烦请细读</span></u>)</strong></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp; &nbsp; 因为比赛性质偏向于对抗，所以将会对一些<strong>爬虫通杀手段</strong>进行禁用。下面为本次比赛禁用的技术。若违规使用技术，则会被<strong><span style="color:red">取消成绩</span></strong>。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; 1.&nbsp;</span>比赛禁止使用<span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;<span style="color:red">selenium / pyppeteer / puppeteer</span>&nbsp;</span>等一系列驱动浏览器自行渲染的工具进行抓取（包括<span style="color:red">无头浏览器</span>在内）。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; 2.&nbsp;</span>比赛禁止使用<span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;<span style="color:red">sekiro</span>&nbsp;</span>等<span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;<span style="color:red">websocket</span></span>框架，严禁利用<span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:red">jsRPC</span></span>进行抓取。<strong>严禁</strong>OCR等非爬虫操作（<strong><span style="color:red">第八题的验证码可以使用OCR识别</span></strong>）！</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; 3.&nbsp;</span>比赛禁止使用除<span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;<strong><span style="color:red">python/java</span></strong>&nbsp;</span>以外的语言进行参赛（推荐优先使用<span style="font-family:&quot;Times New Roman&quot;,serif">Python</span>）。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">4.&nbsp;</span>比赛中<strong>允许</strong>使用<strong><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:red">execjs/pyv8/node.js</span></span></strong>接口等方式去进行<span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;js</span>代码的执行，但在执行的<span style="font-family:&quot;Times New Roman&quot;,serif">js</span>代码中禁止导入<strong><span style="color:red">一切第三方库</span></strong>（如：<strong><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:red">jsdom</span></span></strong><span style="color:red">、</span><strong><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:red">atob</span></span></strong>等），若有自己写的node.js库，需将核心逻辑写入该执行的js文件中。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">5.<strong><span style="color:red">比赛允许</span></strong>在抓取调试过程中使用<span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;AST</span>辅助<span style="font-family:&quot;Times New Roman&quot;,serif">js</span>进行分析。<strong><span style="color:red">原则上</span></strong>可以搭建node.js接口（即利用<strong><span style="color:red">express</span></strong>）然后调用接口处理js。但是要把搭建服务的代码一同提交进行代码审查（所以不太建议这么做）</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; 6.&nbsp;</span>由于题目并没有对<span style="font-family:&quot;Times New Roman&quot;,serif">IP</span>进行任何限制（并没有必要进行限制），所以比赛中<strong><span style="color:red">禁止</span></strong>使用<span style="font-family:&quot;Times New Roman&quot;,serif">IP</span>代理池、验证码打码平台等第三方提供的爬虫辅助服务</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp; &nbsp; 7.&nbsp;</span>由于比赛中对抓取速度没有要求，所以禁止使用<span style="font-family:&quot;Times New Roman&quot;,serif">scrapy</span>等爬虫框架以及多线程、多进程、异步等加快抓取速度的采集方法。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;&nbsp;&nbsp; 8.</span>一切&nbsp;<strong><span style="color:red">作弊，投机取巧</span></strong>，利用网站<strong><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:red">bug/</span></span></strong><strong><span style="color:red">漏洞</span></strong>手段皆会清除排名，注销账号。</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;&nbsp;&nbsp; 9.</span>对于某项技术（骚操作）如果不确定是否违规请&nbsp;<strong><span style="color:red">一定，一定，一定</span></strong>在群里询问！</span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><strong>三、比赛工具注意事项</strong></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线">&nbsp; &nbsp; 比赛时，调试代码推荐使用<strong><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:red">chrome</span></span></strong>浏览器（并且<strong><span style="color:red">关闭</span></strong><span style="font-family:&quot;Times New Roman&quot;,serif">chrome</span>相关插件），其他浏览器可能会引发各种异常问题导致网页无法正常显示。比赛网页已在多台电脑的<strong><span style="color:red">chrome</span><span style="color:red">无痕浏览器</span></strong>测试正常。不保证对其他浏览器的兼容性。</span></span></p>-->
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">*</span><span style="font-size:11.0pt">第十一题（app题目）算出的结果请和之前十道题一样，在网页上提交答案，排名方可生效。不要在APP上提交结果</span></span></span></p>-->
+
+    <!--<p style="text-align:justify"><span style="font-size:10.5pt"><span style="font-family:等线"><span style="font-size:11.0pt">*</span><span style="font-size:11.0pt">第十一题可以使用rpc的方式，但是通过协议答对的比使用rpc排名会靠前</span></span></span></p>-->
+    <!--</div>-->
+    <!--<div>-->
+    <!--<p><span style="font-size:36px"><strong>最新通知：为了方便大家更好的使用这个平台，并且与大家有更加充分的交流，我建立了一个平台刷题交流群。大家扫描下方二维码，备注&ldquo;刷题&rdquo;加我好友，我拉你进交流群里与各位大佬进行交流。</strong></span></p>-->
+    <!--<p><img alt="" src="/static/match/dist/images/group.jpg" style="height:300px; width:210px" /></p>-->
+    <!--</div>-->
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-primary no-alert" data-dismiss="modal">关闭须知</button>-->
+    <!--</div>-->
+    <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+    <!--</div>-->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #0f1114;max-height: 500px; overflow:auto;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">平台通知</h4>
+                </div>
+                <!--<div class="modal-body" style="color: white;font-size: 15px">-->
+                <!--1. 平台已决定长期对外开放，注册与登录功能正在开发中。题目将不定期更新;-->
+                <!--</div>-->
+                <div class="modal-body" style="color: white;font-size: 15px">
+                    1. <b style="color: #ffdd00">【重要通知】</b>建了一个 本网站的 刷题 交流群，扫下方二维码，备注“刷题”，加我私人微信，拉你进 猿人学-爬虫对抗赛 刷题 交流群。
+                    <p></p>
+                    <p>后面新出的对抗题，也在群里通知。</p>
+                    <p style="text-align: center"><img alt="" src="/static/match/dist/images/group.jpg" style="height:300px; width:210px; margin: auto;margin-top: 20px" />
+
+                </div>
+                <div class="modal-body" style="color: white;font-size: 15px">
+                    2. 第13题已经正式上线，难度【非常简单】，欢迎大佬们蹂躏体验;
+                </div>
+                <div class="modal-body" style="color: #545bb7">
+
+                </div>
+
+            </div><!-- /.modal-content -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary no-alert" data-dismiss="modal">俺知道了【不再提醒】</button>
+            </div>
+        </div><!-- /.modal-dialog -->
+
+    </div><!-- /.modal -->
+
+    <header class="site-header">
+        <div class="container">
+            <div class="site-header-inner" style="z-index: 2">
+                <div class="brand header-brand">
+                    <h1 class="m-0">
+                        <a href="#">
+                            <img class="header-logo-image" src="/static/match/dist/images/logo.png" style="width: 180px "
+                                 alt="Logo">
+                        </a>
+                    </h1>
+                </div>
+                <div class="menu float-left">
+                    <a href="https://www.yuanrenxue.com/aboutus" target="_blank">关于猿人学</a>
+                    <a href="https://www.yuanrenxue.com/crawler/crawler-course.html" target="_blank">爬虫进阶课</a>
+                    <a href="http://tool.yuanrenxue.com/" target="_blank">爬虫分析工具</a>
+
+                </div>
+                <div class="menu float-right">
+                    <a href="/">主页</a>
+                    <a class="btn-lg alert_ban" data-toggle="modal" data-target=".modal" style="cursor:pointer;">最新公告</a>
+                    <a href="/login" class="login_a" >登录</a>
+                    <a href="/register" class="reg">注册</a>
+                    <!--<a href="/login" class="login_a">登录</a>-->
+                    <!--<a href="/register" class="reg">注册</a>-->
+                </div>
+            </div>
+        </div>
+    </header>
+    <div style="margin-top: 4%">
+        <h2 class="hero-title mt-0">任务十六：抓取这5页的数字，计算加和并提交结果</h2>
+        <table class="table table-dark table-hover" style="z-index: 2">
+            <tbody>
+            <tr class="number">
+                <td>150</td>
+                <td>150</td>
+                <td>150</td>
+                <td>150</td>
+                <td>150</td>
+                <td>150</td>
+                <td>150</td>
+                <td>150</td>
+                <td>150</td>
+                <td>150</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="container">
+            <div class="row pad-15">
+                <div class="col-md-12">
+                    <nav class="pagination-outer" aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item before-page">
+                                <a  class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                </a>
+                            </li>
+                            <li class="page-item page-message active"><a class="page-link" >1</a></li>
+                            <li class="page-item page-message"><a class="page-link" >2</a></li>
+                            <li class="page-item page-message"><a class="page-link" >3</a></li>
+                            <li class="page-item page-message"><a class="page-link" style="background: #ad4310 !important;">4</a></li>
+                            <li class="page-item page-message"><a class="page-link" style="background: #ad4310 !important;">5</a></li>
+                            <li class="page-item next-page">
+                                <a  class="page-link" aria-label="Next">
+                                    <span aria-hidden="true">»</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <form method="get" action='/api/answers' id="ajaxForm">
+            <div class="inset">
+                <p>
+                    <label>请此处输入答案</label>
+                    <input type="text" name="answer">
+                </p>
+                <p style="color: #ff6600">温馨提示：如果您已登录，那么每个人看到的答案都是不一样的，发送请求时请传入cookie中 sessionid参数，否则返回的答案将不是您自己的数据</p>
+                <p>
+                    <input type="hidden" name="id" value="16">
+                    <input type="button" value="提交答案" id="ajaxSubmit">
+                </p>
+            </div>
+
+        </form>
+    </div>
+    <script src="/static/match/match16/webpack.js"></script>
+    <script>
+        !function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?a(require("jquery")):a(jQuery)}(function(a){function b(a){return h.raw?a:encodeURIComponent(a)}function c(a){return h.raw?a:decodeURIComponent(a)}function d(a){return b(h.json?JSON.stringify(a):String(a))}function e(a){0===a.indexOf('"')&&(a=a.slice(1,-1).replace(/\\"/g,'"').replace(/\\\\/g,"\\"));try{return a=decodeURIComponent(a.replace(g," ")),h.json?JSON.parse(a):a}catch(b){}}function f(b,c){var d=h.raw?b:e(b);return a.isFunction(c)?c(d):d}var g=/\+/g,h=a.cookie=function(e,g,i){if(void 0!==g&&!a.isFunction(g)){if(i=a.extend({},h.defaults,i),"number"==typeof i.expires){var j=i.expires,k=i.expires=new Date;k.setTime(+k+864e5*j)}return document.cookie=[b(e),"=",d(g),i.expires?"; expires="+i.expires.toUTCString():"",i.path?"; path="+i.path:"",i.domain?"; domain="+i.domain:"",i.secure?"; secure":""].join("")}for(var l=e?void 0:{},m=document.cookie?document.cookie.split("; "):[],n=0,o=m.length;o>n;n++){var p=m[n].split("="),q=c(p.shift()),r=p.join("=");if(e&&e===q){l=f(r,g);break}e||void 0===(r=f(r))||(l[q]=r)}return l};h.defaults={},a.removeCookie=function(b,c){return void 0===a.cookie(b)?!1:(a.cookie(b,"",a.extend({},c,{expires:-1})),!a.cookie(b))}});
+    </script>
+    <script>
+
+        var ConsoleManager={
+            onOpen:function(){
+                alert("Console is opened")
+            },
+            onClose:function(){
+                alert("Console is closed")
+            },
+            init:function(){
+                var self = this;
+                var x = document.createElement('div');
+                var isOpening = false,isOpened=false;
+                Object.defineProperty(x, 'id', {
+                    get:function(){
+                        if(!isOpening){
+                            self.onOpen();
+                            isOpening=true;
+                        }
+                        isOpened=true;
+                    }
+                });
+                setInterval(function(){
+                    isOpened=false;
+                    console.info(x);
+                    console.clear();
+                    if(!isOpened && isOpening){
+                        self.onClose();
+                        isOpening=false;
+                    }
+                },200)
+            }
+        }
+        ConsoleManager.onOpen = function(){
+            try{
+                window.open('http://match.yuanrenxue.com/',target='_self');
+            }catch(err){
+                var a = document.createElement("button");
+                a.onclick=function(){
+                    window.open('http://match.yuanrenxue.com/',target='_self');
+                };
+                a.click();
+            }
+        };
+        ConsoleManager.init();
+    </script>
+    <script>
+
+    </script>
+    <footer class="site-footer">
+		<div class="container">
+			<div class="site-footer-inner">
+				<div class="brand footer-brand">
+					<a href="#">
+<!--						<img class="header-logo-image" src="/static/match/dist/images/logo.svg" alt="Logo">-->
+					</a>
+				</div>
+				<ul class="footer-social-links list-reset">
+					<li>
+						<a href="https://www.yuanrenxue.com/">
+<!--                            <svg width="16" height="16" class="icon" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1307"><path d="M290.0992 409.6H155.136a371.4048 371.4048 0 0 0-14.2848 102.4c0 35.5328 4.9664 69.888 14.336 102.4h134.9632c-5.632-32.768-8.4992-66.9184-8.4992-102.4 0-35.4816 2.8672-69.632 8.4992-102.4z m52.0704 0a542.1056 542.1056 0 0 0-9.3696 102.4c0 35.7376 3.072 69.888 9.3696 102.4H486.4V409.6H342.1696z m75.008 461.3632A491.8784 491.8784 0 0 1 301.568 665.6H173.9776a372.0704 372.0704 0 0 0 243.2 205.3632z m69.2224-3.584V665.6H354.9696c24.064 77.1072 67.84 144.2304 131.4304 201.8304zM417.1776 153.088A372.0704 372.0704 0 0 0 173.9776 358.4H301.568a491.8784 491.8784 0 0 1 115.5584-205.3632z m69.2224 3.584C422.8096 214.1184 379.0848 281.2416 354.9696 358.4H486.4V156.5696zM733.9008 409.6c5.632 32.768 8.4992 66.9184 8.4992 102.4 0 35.4816-2.8672 69.632-8.4992 102.4h135.0144c9.3184-32.512 14.2848-66.8672 14.2848-102.4s-4.9664-69.888-14.336-102.4h-134.9632z m-52.0704 0H537.6v204.8h144.2304c6.2464-32.512 9.3696-66.6624 9.3696-102.4s-3.072-69.888-9.3696-102.4z m-75.008 461.3632A372.0704 372.0704 0 0 0 850.0224 665.6H722.432a491.8784 491.8784 0 0 1-115.5584 205.3632z m-69.2224-3.584c63.5904-57.5488 107.3152-124.672 131.4304-201.7792H537.6v201.8304zM606.8224 153.088A491.8784 491.8784 0 0 1 722.432 358.4h127.6416a372.0704 372.0704 0 0 0-243.2-205.3632z m-69.2224 3.584V358.4h131.4304c-24.064-77.1072-67.84-144.2304-131.4304-201.8304zM512 947.2a435.2 435.2 0 1 1 0-870.4 435.2 435.2 0 0 1 0 870.4z" fill="#0270D7" p-id="1308" ></path></svg>-->
+						</a>
+					</li>
+					<li>
+						<a href="#">
+<!--							<svg width="16" height="16" class="icon" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="503"><path d="M691.537 318.713c11.305 0 22.491 0.83 33.587 2.065-30.178-140.519-180.417-244.922-351.905-244.922-191.721 0-348.77 130.677-348.77 296.612 0 95.781 52.25 174.437 139.561 235.444l-34.884 104.916 121.923-61.138c43.628 8.634 78.631 17.513 122.168 17.513 10.945 0 21.796-0.541 32.559-1.386-6.814-23.317-10.762-47.739-10.762-73.080 0.001-152.368 130.849-276.023 296.521-276.023zM504.010 224.153c26.261 0 43.659 17.277 43.659 43.52 0 26.139-17.396 43.655-43.659 43.655-26.14 0-52.371-17.516-52.371-43.655 0-26.244 26.229-43.52 52.371-43.52zM259.918 311.328c-26.137 0-52.519-17.516-52.519-43.655 0-26.243 26.381-43.52 52.519-43.52 26.139 0 43.537 17.277 43.537 43.52 0 26.139-17.397 43.655-43.537 43.655zM1009.856 590.545c0-139.436-139.534-253.094-296.248-253.094-165.943 0-296.639 113.657-296.639 253.094 0 139.675 130.698 253.094 296.639 253.094 34.733 0 69.765-8.758 104.646-17.501l95.663 52.383-26.229-87.157c70.007-52.52 122.167-122.164 122.167-200.819zM617.43 546.905c-17.365 0-34.884-17.277-34.884-34.897 0-17.377 17.518-34.879 34.884-34.879 26.381 0 43.659 17.501 43.659 34.879 0 17.622-17.278 34.897-43.659 34.897zM809.273 546.905c-17.247 0-34.643-17.277-34.643-34.897 0-17.377 17.396-34.879 34.643-34.879 26.139 0 43.654 17.501 43.654 34.879 0.001 17.622-17.514 34.897-43.654 34.897z" p-id="504" fill="#0270D7"></path></svg>-->
+						</a>
+					</li>
+					<li>
+						<a href="#">
+<!--                            <svg width="18" height="18" class="icon" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2116"><path d="M621.105 489.791c40.778-32.161 66.87-81.92 66.87-137.747 0-96.726-78.643-175.37-175.37-175.37s-175.37 78.643-175.37 175.37c0 55.827 26.214 105.586 66.87 137.747-36.895 14.563-70.755 36.773-99.638 65.658-55.584 55.584-86.167 129.494-86.167 208.138 0 16.262 0 33.618 0.122 49.637s13.107 29.006 29.127 29.006h530.235c16.02 0 29.127-12.986 29.127-29.006v-49.637c0-78.643-30.583-152.554-86.167-208.138-28.884-28.884-62.745-51.094-99.638-65.658zM395.491 352.044c0-64.565 52.55-117.115 117.115-117.115s117.115 52.55 117.115 117.115-52.55 117.115-117.115 117.115c-64.565 0.122-117.115-52.55-117.115-117.115z m353.167 412.148v19.782H276.557v-20.389c0-130.222 105.95-236.051 236.051-236.051 130.222 0 236.051 105.828 236.051 236.051v0.607zM871.477 545.982c-21.482-28.763-49.274-52.55-80.828-69.42 26.457-26.7 41.748-62.988 41.748-101.945 0-32.161-10.316-62.501-29.733-87.988-18.811-24.515-45.511-42.841-75.124-51.337-12.865-3.641-26.336 3.762-29.977 16.626s3.762 26.336 16.626 29.977c41.021 11.773 69.783 49.881 69.783 92.721 0 36.53-20.268 69.42-52.793 86.047-8.738 4.491-13.957 13.836-13.229 23.666 0.85 9.83 7.524 18.205 16.869 21.117 81.556 25.607 136.291 100.246 136.291 185.685v40.778c0 13.349 10.801 24.272 24.151 24.394h0.122c13.349 0 24.272-10.801 24.272-24.151v-40.899c-0.122-52.793-16.748-103.037-48.181-145.271z m-586.062-40.414c9.467-2.913 16.142-11.286 16.869-21.117 0.85-9.83-4.369-19.175-13.229-23.666-32.526-16.626-52.793-49.516-52.793-86.047 0-42.841 28.641-80.949 69.783-92.721 12.865-3.762 20.268-17.113 16.626-29.977-3.762-12.865-17.113-20.268-29.977-16.626-29.613 8.496-56.313 26.821-75.124 51.337-19.419 25.486-29.733 55.827-29.733 87.988 0 38.958 15.292 75.245 41.748 101.945-31.434 16.869-59.346 40.656-80.828 69.42-31.554 42.235-48.181 92.479-48.181 145.271v40.899c0 13.349 10.923 24.151 24.272 24.151h0.122c13.349 0 24.272-10.923 24.151-24.394v-40.778c0-85.561 54.855-160.199 136.291-185.685z" p-id="2117" fill="#0270D7"></path></svg>-->
+						</a>
+					</li>
+				</ul>
+				<div class="footer-copyright">Copyright &copy; 2020 猿人学 Python &nbsp&nbsp&nbsp<a target="_blank" href="http://www.beian.miit.gov.cn/publish/query/indexFirst.action">备案号：蜀ICP备18020009号-3</a></div>
+			</div>
+		</div>
+	</footer>
+<script>
+
+	$.ajax({
+            url: '/api/loginInfo',
+            dataType: "json",
+            async: false,
+            type: "GET",
+            beforeSend: function(request) {
+            },
+            success: function(data) {
+                window.userrank = data.rank;
+                nick = data.nick;
+                if(nick){
+                	$('.login_a').text('@'+nick).attr('href', '#');
+                	window.nick = nick;
+                	window.login = true;
+                $('.reg').text('登出').attr('href', '/api/logout').unbind();
+                $('.login_rank').append('您当前的排名：<b style="color: red">' + data.rank + '</b>')
+
+                }
+                },
+            complete: function() {
+            },
+            error: function(e) {
+                console.log(e);
+                // alert('因未知原因，数据拉取失败。可能是触发了风控系统');
+                // alert('生而为虫，我很抱歉');
+                $('.page-message').eq(0).addClass('active');
+                $('.page-message').removeClass('active');
+            }
+        });
+    $_aiding = window;
+    window.$_tb = [];
+    window.$_zw = [];
+    let m = Math.abs((Date.parse(new Date())>>8)/1000);
+    let $_t1 = Date.parse(new Date());
+    m = m.toString();
+    for(let i=200;i<=m;i++){
+        let f = String.fromCharCode(i);
+        try {
+            if(f!=="$"){
+            eval('window.' + f + '=$("' + String.fromCharCode(i>>(m.substring(m.length-1))) +'")');
+            window.$_tb.push(i << 8);
+            }
+        }
+        catch (e) {
+        }
+    }
+	$_aiding.$_ts = $('a').css("cursor","pointer");
+    $_aiding.$_jd = window.$_tb.toString();
+    $_aiding.$_b4 = btoa(window.$_jd);
+    $_aiding.$_zw.push(window.$_b4.length);
+    $_aiding.$_zw.push(window.$_b4);
+    $_aiding.$_zw.push(window.$_jd);
+    $_aiding.$_zw.push(window.$_tb.length);
+    $_aiding.$_zw.push(window.$_jd.split(',').length);
+    $_aiding.$_zw.push(window.$_zw[3]===window.$_zw[4]);
+    $_aiding.$_zw.push('明说了，这个数组是指纹');
+	$_aiding.$_zw.push(Date);
+	$_aiding.$_zw.push(String);
+	$_aiding.$_zw.push(eval);
+	$_aiding.$_zw.push(window);
+	$_aiding.$_zw.push(document);
+	try {$_aiding.$_zw.push(global);}
+	catch (e) {$_aiding.$_zw.push(setInterval)}
+    try {
+        $_aiding.$_zw.push($('script'));
+    }
+    catch (e) {
+        $_aiding.$_zw.push($_aiding.document.location);
+    }
+$_aiding.$_zw.push(Error);
+$_aiding.$_zw.push(Array);
+$_aiding.$_zw.push(Object);
+$_aiding.$_zw.push(unescape);
+$_aiding.$_zw.push(parseInt);
+$_aiding.$_zw.push(encodeURIComponent);
+$_aiding.$_zw.push(Function);
+$_aiding.$_zw.push(new Array());
+$_aiding.$_zw.push(new Array());
+$_aiding.$_zw.push($_t1);
+$(function(){
+    $('body').mousemove(function(e) {
+        __xx = e.pageX || e.clientX + document.body.scroolLeft;
+        __yy = e.pageY || e.clientY + document.body.scrollTop;
+        $_aiding.$_zw[21].push(__xx);
+        $_aiding.$_zw[22].push(__yy);
+    });
+});
+
+    for(let i=0; i<$_aiding.$_tb.length;i++){
+        try {
+            if ($_aiding[String.fromCharCode(window.$_tb[i] >> 8)].context === document){
+            }
+            else {
+
+               alert('系统环境异常');
+				location.reload()
+            }
+        }
+        catch (e) {
+            alert('系统环境异常');
+			location.reload()
+        }
+    }
+
+var userAgent = navigator.userAgent;
+var isOpera = userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1;
+var isEdge = userAgent.indexOf("Edge") > -1;
+var isChrome = userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Safari") > -1;
+var isIE = userAgent.indexOf("rv") > -1 || (userAgent.indexOf("MSIE") > -1 && userAgent.indexOf("compatible") > -1);
+if ((isOpera || isChrome) && !isEdge && !isIE) {
+  window.webkitStorageInfo.queryUsageAndQuota(webkitStorageInfo.TEMPORARY,
+    function(used, remaining) {
+      if (remaining < 120000000) {
+            $_aiding['$_zw']['push'](true)
+      } else {
+
+      }
+    }, function(e) {
+    }
+  );
+}
+$_aiding['$_zw']['push']($_aiding['$_zw'][7].parse(new $_aiding['$_zw'][7]()));
+function download_img() {
+        let url = '/save_success_png';
+        let httpRequest = new XMLHttpRequest();
+        httpRequest.open('GET', url, true);
+        httpRequest.send();
+
+
+
+        var callback = function(blob) {
+            let aLink = document.createElement('a');
+            let evt = document.createEvent("HTMLEvents");
+            evt.initEvent("click", true, true);//initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为
+
+            aLink.href = URL.createObjectURL(blob);
+
+            aLink.download = aLink.href.split('/')[aLink.href.split('/').length-1] + '.png';
+            aLink.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}))
+        };
+        let url_b64 = $('.poster_img').attr('src');                            // 获取图片地址
+        let binstr = atob(url_b64.split(',')[1]);
+        let len = binstr.length;
+        let arr = new Uint8Array(len);
+        for (var i = 0; i < len; i++) {
+            arr[i] = binstr.charCodeAt(i);
+        }
+        callback(new Blob([arr]));
+    }
+
+poster_show = function () {
+	let name = $('.login_a').text();
+	let poster_html = `
+					<div class="poster_img_div">
+					<img  class="poster_img" src="" alt="">
+					<a class="button button-primary button-primary_ts button-primary_1" href="/list" style="cursor: pointer;">继续挑战</a>
+					<a class="button button-primary button-primary_ts button-primary_2"  onclick="download_img()" style="cursor: pointer;">保存大图</a>
+					</div>
+					<div class="poster">
+						 <!--<img class="post_img" src="/static/match/poster.jpg" alt="">-->
+						<img class="post_img" src="/static/match/poster3.jpg" alt="">
+						<span class="post_font">第 <b style="color: #ff6600">` + $("input[name='id']").attr('value')+`</b> 关</span>
+						<span class="post_name">通关人： <b style="color: #ff6600">` + name.replace('@','') + `</b> </span>
+						<img class="post_finish" src="/static/match/web_url.png" alt="">
+						<!--<span class="post_message">人生在勤,不索何获</span>-->
+						<!--<img class="post_finish" src="/static/match/poster-finish.png" alt="">-->
+						<!--<img class="post_finish_logo" src="/static/match/dist/images/logo.png" alt="">-->
+					</div>
+					`;
+	$('body').append(poster_html) ;
+	$(function () {
+		window.pageYOffset = 0;
+		document.documentElement.scrollTop = 0;
+		document.body.scrollTop = 0;
+		let targetDom = $(".poster")[0];
+		html2canvas(targetDom,{
+			allowTaint: true,
+			useCORS: true,
+			x: targetDom.getBoundingClientRect().left + 7,
+			y: targetDom.getBoundingClientRect().top,
+			width:targetDom.offsetWidth,//设置canvas尺寸与所截图尺寸相同，防止白边
+			height:targetDom.clientHeight - 220,//防止白边
+			dpi: window.devicePixelRatio * 2, // 解决图片不清晰问题
+			// scale: 2
+		}).then(function(canvas){
+
+
+
+			var imgUri = canvas.toDataURL();
+			$('.poster_img').attr('src',imgUri);//生成base64的编码图片
+			$('.poster').css('display','none');
+			$('body').append('<div class="over"></div>');
+			$('.over')
+				.css('background-color', '#000')
+				.css('width', '100%')
+				.css('position', 'absolute')
+				.css('height', document.body.scrollHeight + 'px')
+				.css('opacity', '0.3')
+				.css('z-index', '19000')
+				.css('left', '0')
+				.css('top', '0')
+				.css('opacity', '0.3');
+			let m = $(window).width() * 0.2;
+			if (m<=300){
+			    m = 300
+			}
+			else if(m>=390){
+				m = 390
+			}
+			$('.poster_img').css('width', m + 'px')
+		})
+	});
+}
+    // $('#ajaxSubmit').click(function () {
+    //     alert('比赛已经结束，提交答案功能正在维护中。敬请期待')
+    // });
+
+	function page_click(){
+        $('.page-item').unbind();
+        alert('第四页，第五页已锁定。只能使用程序进行协议请求才能看到数据。\n在使用程序请求这两个页面时请将User-Agent设置为： yuanrenxue.project；另外请求时cookie需要传入sessionid才能返回数据');
+        location.reload()
+	}
+    $('.page-item a').eq(4).css('cssText', 'background:#ad4310 !important;cursor: pointer;').unbind().click(page_click);
+    $('.page-item a').eq(5).css('cssText', 'background:#ad4310 !important;cursor: pointer;').unbind().click(page_click);
+</script>
+<script type="application/javascript">
+
+    $('.no-alert').click(function () {
+        let uqiop_date = new Date();
+        uqiop_date.setTime(uqiop_date.getTime() + 24* 60 * 60 * 1000);
+        document.cookie = 'qpfccr=true;path=/;expires=' + uqiop_date.toUTCString();
+        document.cookie = 'no-alert2=true; path=/'
+    });
+    if ($.cookie('no-alert2') !== 'true'){
+        (function (){$('.alert_ban').click()})()
+    }
+
+</script>
+</div>
+
+<script>
+    successAlert = function(message) {
+        let option = {
+            hook: {
+                initStart: function() {}
+            },
+            popupTime: 0,
+            type: 'alert',
+            title: '答案正确',
+            dragOverflow: true,
+            content: '<i class="fas fa-check" style="color: deepskyblue"></i>'+message,
+        };
+        ModalLayer.alert(option)
+    };
+    failedAlert = function(message) {
+        let option = {
+            popupTime: 2,
+            hook: {
+                initStart: function() {}
+            },
+            displayProgressBar: true,
+            displayProgressBarPos: 'top',
+            displayProgressBarColor: 'red',
+            content: '<i class="fas fa-times" style="color: red"></i>' + message,
+        };
+        ModalLayer.msg(option)
+    };
+</script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="/static/boke/js/jquery.form.js"></script>
+<script type="text/javascript" src="/static/boke/js/jquery.js"></script>
+<script src="/static/asset/js/modallayer-ie.min.js"></script>
+<script>
+    $(function() {
+        $("#ajaxSubmit").on("click", function() {
+            $("#ajaxForm").ajaxSubmit({
+                beforeSubmit: function() {},
+                success: function(data) {
+                    result = data.status_code;
+                    if (result === "1") {
+                        // successAlert('答案正确！即将回到列表页');
+                        // window.setTimeout("window.location='/list'", 2000)
+                        poster_show()
+                    }
+                    else {
+                        failedAlert('答案验证失败，再不...再想想？')
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>
